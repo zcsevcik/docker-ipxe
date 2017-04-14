@@ -4,11 +4,13 @@ prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && sh
 console --x 800 --y 600 --depth 16 ||
 ifstat && echo
 ifconf && route || config
-nstat && echo
 
 ntp cz.pool.ntp.org ||
+nstat && echo
 
 prompt --timeout 5000 Press any key to continue... ||
 set initiator-iqn iqn.2010-04.org.ipxe:${mac:hexhyp}
-chain pxelinux.0
+
+chain --replace --autofree http://${next-server:ipv4}/pxelinux.0 ||
+shell
 
