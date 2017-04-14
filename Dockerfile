@@ -1,7 +1,10 @@
 FROM nginx:stable-alpine
+CMD []
+
 LABEL maintainer "zcsevcik@gmail.com"
 
 COPY myscript.ipxe /tmp/
+COPY supervisor.conf /etc/supervisord.conf
 RUN apk --update --no-cache add tftp-hpa supervisor && \
     apk --update --no-cache add --virtual build-dependencies \
     git gcc binutils make perl syslinux xz-dev musl musl-utils musl-dev && \
@@ -15,6 +18,5 @@ RUN apk --update --no-cache add tftp-hpa supervisor && \
     apk del build-dependencies
 
 EXPOSE 69
-COPY supervisor.conf /etc/supervisor.conf
-CMD ["supervisord", "-c", "/etc/supervisor.conf"]
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
 
