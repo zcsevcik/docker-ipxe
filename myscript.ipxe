@@ -1,0 +1,12 @@
+#!ipxe
+prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
+
+console --x 800 --y 600 --depth 16 ||
+ifstat && echo
+ifconf && route || config
+nstat && echo
+
+prompt --timeout 5000 Press any key to continue... ||
+set initiator-iqn iqn.2010-04.org.ipxe:${mac:hexhyp}
+chain pxelinux.0
+

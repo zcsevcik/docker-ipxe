@@ -1,2 +1,2 @@
 # docker-ipxe
-A docker image containing nginx and ipxe
+A docker container with nginx, tftp and ipxe
