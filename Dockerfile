@@ -11,9 +11,10 @@ RUN apk --update --no-cache add tftp-hpa supervisor && \
 
     git clone --depth 1 git://git.ipxe.org/ipxe.git /usr/src/ipxe && \
     sed -i /usr/src/ipxe/src/config/console.h \
-        -e 's|//#define[ \t]\+CONSOLE_FRAMEBUFFER|  #define\tCONSOLE_FRAMEBUFFER|' && \
+        -e 's|//#define[ \t]\+CONSOLE_FRAMEBUFFER|#define\t\tCONSOLE_FRAMEBUFFER|' && \
     sed -i /usr/src/ipxe/src/config/general.h \
-        -e 's|//#define CONSOLE_CMD|#define CONSOLE_CMD|' && \
+        -e 's|//#define[ \t]\+CONSOLE_CMD|#define CONSOLE_CMD|' \
+        -e 's|//#undef[ \t]\+SANBOOT_PROTO_ISCSI|#define\t\tSANBOOT_PROTO_ISCSI|' && \
     make -C /usr/src/ipxe/src bin/undionly.kpxe EMBED=/tmp/myscript.ipxe && \
     mkdir -p /usr/share/tftp/ && \
     cp -fv /usr/src/ipxe/src/bin/undionly.kpxe /usr/share/tftp/ && \
