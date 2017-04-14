@@ -6,6 +6,8 @@ ifstat && echo
 ifconf && route || config
 nstat && echo
 
+ntp cz.pool.ntp.org ||
+
 prompt --timeout 5000 Press any key to continue... ||
 set initiator-iqn iqn.2010-04.org.ipxe:${mac:hexhyp}
 chain pxelinux.0

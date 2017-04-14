@@ -19,7 +19,8 @@ RUN apk --update --no-cache add tftp-hpa supervisor && \
         -e 's|//#define[ \t]\+NSLOOKUP_CMD|#define NSLOOKUP_CMD|' \
         -e 's|//#define[ \t]\+PING_CMD|#define PING_CMD|' \
         -e 's|//#define[ \t]\+POWEROFF_CMD|#define POWEROFF_CMD|' \
-        -e 's|//#define[ \t]\+REBOOT_CMD|#define REBOOT_CMD|' && \
+        -e 's|//#define[ \t]\+REBOOT_CMD|#define REBOOT_CMD|' \
+        -e 's|//#define[ \t]\+NTP_CMD|#define NTP_CMD|' && \
     make -C /usr/src/ipxe/src bin/undionly.kpxe EMBED=/tmp/myscript.ipxe && \
     mkdir -p /usr/share/tftp/ && \
     cp -fv /usr/src/ipxe/src/bin/undionly.kpxe /usr/share/tftp/ && \
