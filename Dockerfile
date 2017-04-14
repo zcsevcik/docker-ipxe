@@ -16,7 +16,8 @@ RUN apk --update --no-cache add tftp-hpa supervisor && \
         -e 's|//#define[ \t]\+CONSOLE_CMD|#define CONSOLE_CMD|' \
         -e 's|//#undef[ \t]\+SANBOOT_PROTO_ISCSI|#define\t\tSANBOOT_PROTO_ISCSI|' \
         -e 's|//#define[ \t]\+NEIGHBOUR_CMD|#define NEIGHBOUR_CMD|' \
-        -e 's|//#define[ \t]\+NSLOOKUP_CMD|#define NSLOOKUP_CMD|' && \
+        -e 's|//#define[ \t]\+NSLOOKUP_CMD|#define NSLOOKUP_CMD|' \
+        -e 's|//#define[ \t]\+PING_CMD|#define PING_CMD|' && \
     make -C /usr/src/ipxe/src bin/undionly.kpxe EMBED=/tmp/myscript.ipxe && \
     mkdir -p /usr/share/tftp/ && \
     cp -fv /usr/src/ipxe/src/bin/undionly.kpxe /usr/share/tftp/ && \
