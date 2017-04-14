@@ -8,8 +8,8 @@ RUN apk --update --no-cache add tftp-hpa supervisor && \
 
     git clone --depth 1 git://git.ipxe.org/ipxe.git /usr/src/ipxe && \
     make -C /usr/src/ipxe/src bin/undionly.kpxe EMBED=/tmp/myscript.ipxe && \
-    mkdir -p /usr/share/ipxe/ && \
-    cp -v /usr/src/ipxe/src/bin/undionly.kpxe /usr/share/ipxe/ && \
+    mkdir -p /usr/share/tftp/ && \
+    cp -fv /usr/src/ipxe/src/bin/undionly.kpxe /usr/share/tftp/ && \
     rm -fr /usr/src/ipxe && \
 
     apk del build-dependencies
